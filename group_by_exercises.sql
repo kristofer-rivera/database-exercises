@@ -42,6 +42,11 @@ FROM employees
 GROUP BY first_name, gender
 HAVING first_name IN ('Irena', 'Vidya', 'Maya');
 
+SELECT first_name, gender, COUNT(*)
+FROM employees
+WHERE first_name IN ('Irena','Vidya', 'Maya')
+GROUP BY first_name, gender;
+
 -- Question 8: 
 
 SELECT LOWER(CONCAT(SUBSTR(first_name, 1, 1), SUBSTR(last_name, 1, 4), '_', SUBSTR(birth_date, 6, 2), SUBSTR(birth_date, 3, 2)))
@@ -64,8 +69,9 @@ SELECT emp_no, AVG(salary)
 FROM salaries
 GROUP BY emp_no;
 
-SELECT dept_no, COUNT(emp_no)
+SELECT dept_no, COUNT(*)
 FROM dept_emp
+WHERE to_date > NOW()
 GROUP BY dept_no;
 
 SELECT emp_no, COUNT(salary)
