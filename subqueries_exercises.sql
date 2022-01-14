@@ -28,41 +28,28 @@ SELECT emp_no, salary FROM salaries WHERE to_date = '9999-01-01' AND salary > (S
 
 -- Question 6: 
 
-SELECT salary FROM salaries
-WHERE to_date = '9999-01-01'
-ORDER BY salary DESC;
 
-SELECT COUNT(salary) AS num_sal
-FROM salaries
-WHERE to_date > NOW();
+SELECT count(*) AS 1_standard_deviation_of_current_highest_salary FROM salaries
+WHERE to_date > now() AND salary > (
+SELECT max(salary) - std(salary) FROM salaries
+WHERE to_date > now());
 
-SELECT MAX(salary) FROM salaries WHERE to_date > NOW();
-
-SELECT MAX(salary) - STDDEV(salary) FROM salaries WHERE to_date > NOW();
-
-SELECT COUNT(salary) AS sal_in_1
-FROM salaries WHERE salary >= (SELECT MAX(salary) - STDDEV(salary) FROM salaries WHERE to_date > NOW()) AND to_date > NOW();
-
-SELECT COUNT(salary) AS sal_in_1
-FROM salaries WHERE salary >= (SELECT MAX(salary) - STDDEV(salary) FROM salaries WHERE to_date > NOW()) AND to_date > NOW())
-/
-(SELECT COUNT(salary) AS num_sal
-FROM salaries
-WHERE to_date > NOW())
-WHERE t_date . NOW()) * 100 AS percent_of_salaries;
-
--- INCOMPLETE SOLUTION
+-- 83 current salaries. 
 
 
 
 
--- BONUS
 
--- Question 1:
 
--- Question 2:
 
--- Question 3:
+
+
+
+
+
+
+
+
 
 
 
